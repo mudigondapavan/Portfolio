@@ -418,27 +418,34 @@
           <h5 class="sub-title">Get in Touch</h5>
           <h3 class="title">Contact</h3>
           <div class="grid grid-2-cols">
-            <form name="Contact" netlify>
+            <form name="Contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="Contact" />
+              <!-- Hidden input -->
+
               <input
                 type="text"
                 placeholder="Pavan Kumar"
                 name="username"
                 required
               />
+
               <input
                 type="email"
                 placeholder="me@example.com"
                 name="email"
                 required
               />
+
               <textarea
                 rows="6"
                 cols="30"
                 placeholder="Enter Your Message"
+                name="message"
                 required
               ></textarea>
+
               <button type="submit" class="button btn-hover">
-                send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>
+                Send Message &nbsp;<i class="fa-solid fa-paper-plane"></i>
               </button>
             </form>
 
