@@ -229,6 +229,7 @@ a:active {
 .hero {
   background-color: var(--primary-lightcolor);
   padding: 6.4rem 3.2rem 9.6rem;
+  padding: 6.4rem 0 9.6rem;
   margin-bottom: 4.8rem;
 }
 
@@ -271,9 +272,8 @@ h1 + h1 {
   width: 80%;
   border-radius: 50%;
   box-shadow: var(--hero-shadow);
-  object-fit: contain;
   transition: all 0.3s ease-in-out;
-  /* object-fit: cover; */
+  object-fit: cover;
 }
 
 .hero-img img:hover {
