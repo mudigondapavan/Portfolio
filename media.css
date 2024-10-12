@@ -60,6 +60,10 @@ SPACING SYSTEM(px)
     display: block;
   }
 
+  .nav-open .close {
+    font-size: 2.5rem;
+  }
+
   nav {
     display: none;
   }

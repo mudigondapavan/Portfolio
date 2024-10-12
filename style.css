@@ -197,7 +197,7 @@ a:active {
 }
 
 .nav-open ul {
-  background-color: rgba(237, 247, 254, 0.9);
+  background-color: rgba(237, 247, 254, 0.95);
   box-shadow: 0 0 8px 8px rgba(77, 171, 247, 0.2);
   padding: 40px;
   flex-direction: column;
@@ -214,8 +214,8 @@ a:active {
   display: block;
   font-size: 2.5rem;
   position: absolute;
-  right: 16%;
-  top: 2px;
+  right: 5%;
+  top: 3%;
 }
 
 /****************/
