@@ -39,7 +39,7 @@ SPACING SYSTEM(px)
   .header {
     position: sticky;
     top: 0;
-    background-color: rgba(237, 247, 254, 0.8);
+    background-color: rgba(237, 247, 254, 0.7);
     backdrop-filter: blur(8px);
   }
 
@@ -71,6 +71,14 @@ SPACING SYSTEM(px)
 
   .project-image-container img {
     width: 80%;
+  }
+
+  .logo {
+    font-size: 2.3rem;
+    font-weight: 700;
+  }
+  .bar {
+    font-size: 2.5rem;
   }
 }
 
@@ -164,9 +172,6 @@ SPACING SYSTEM(px)
     padding: 0;
   }
 
-  .header {
-    padding: 1.2rem 1.6rem;
-  }
   .information {
     width: 100%;
     padding: 1.6rem 1.6rem;
