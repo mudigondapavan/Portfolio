@@ -144,7 +144,19 @@ SPACING SYSTEM(px)
     margin-bottom: 8rem;
   }
 
-  .project .project-image-container:nth-child(2) {
+  .project .omnifood-img {
+    grid-row: 3;
+  }
+
+  .project .lisbon-img {
+    grid-row: 7;
+  }
+
+  .project .number-img {
+    grid-row: 11;
+  }
+
+  /* .project .project-image-container:nth-child(2) {
     grid-row: 1;
   }
 
@@ -154,7 +166,7 @@ SPACING SYSTEM(px)
 
   .project .project-image-container:nth-child(10) {
     grid-row: 9;
-  }
+  } */
   .project-image-container img {
     width: 80%;
   }

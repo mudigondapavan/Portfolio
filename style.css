@@ -395,6 +395,10 @@ h1 + h1 {
   font-size: 1.6rem;
 }
 
+.project .pizza h2 a {
+  color: #eab308;
+}
+
 .project .omnifood h2 a {
   color: #e67e22;
 }
