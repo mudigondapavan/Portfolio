@@ -95,6 +95,10 @@ section {
   margin-bottom: 12.8rem;
 }
 
+/* section + section {
+  transform: translateY(10px);
+} */
+
 .mb-s {
   margin-bottom: 2.4rem;
 }
@@ -108,13 +112,6 @@ textarea::placeholder {
   color: #ccc;
 }
 
-/* FONT SIZE (px)
-  11 / 13 / 16 / 19 / 23 / 28 / 33 / 40 / 48 / 
-
-SPACING SYSTEM(px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
-*/
-
 /****************/
 /* Header */
 /****************/
@@ -127,6 +124,17 @@ SPACING SYSTEM(px)
   font-size: 1.9rem;
   padding: 1.6rem 3.2rem;
   background-color: var(--primary-lightcolor);
+}
+
+section + section {
+  opacity: 1;
+  transition: transform 1s, opacity 1s;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 2s;
 }
 
 ul {
@@ -218,13 +226,21 @@ a:active {
   top: 3%;
 }
 
+/* STICKY NAVIGATION */
+
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: rgba(254, 254, 254, 0.8);
+  z-index: 1;
+  box-shadow: 0 8px 20px -20px rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  transition: all 2s;
+}
+
 /****************/
 /* MAIN */
 /****************/
-
-/* .main {
-  min-height: 90vh;
-} */
 
 .hero {
   background-color: var(--primary-lightcolor);
@@ -438,6 +454,11 @@ h1 + h1 {
 
 .project a img:hover {
   transform: scale(1.2);
+}
+
+/* Lazy Images */
+.blur {
+  filter: blur(8px);
 }
 
 /****************/

@@ -6,30 +6,6 @@ var typed = new Typed(".auto-type", {
   loop: true
 });
 
-// Sticky navigation
-
-// const sectionHeroEl = document.querySelector(".section-hero");
-
-// const obs = new IntersectionObserver(
-//   function (entries) {
-//     const ent = entries[0];
-
-//     if (ent.isIntersecting === false) {
-//       document.body.classList.add("sticky");
-//     }
-
-//     if (ent.isIntersecting === true) {
-//       document.body.classList.remove("sticky");
-//     }
-//   },
-//   {
-//     // In the viewport
-//     root: null,
-//     threshold: 0,
-//     rootMargin: "-80px",
-//   }
-// );
-// obs.observe(sectionHeroEl);
 
 // TABED COMPONENT
 const btnParent = document.querySelector('.about .grid')
@@ -46,12 +22,12 @@ btnRight.addEventListener('click', () => {
   btnParent.classList.remove('left-active')
 })
 
-// MOBILE NAVIGATION
 
+
+// MOBILE NAVIGATION
 const bar = document.querySelector('.bar')
 const close = document.querySelector('.close')
 const header = document.querySelector('.header')
-console.log(bar)
 
 bar.addEventListener('click', () => {
   header.classList.add('nav-open')
@@ -60,3 +36,72 @@ bar.addEventListener('click', () => {
 close.addEventListener('click', () => {
   header.classList.remove('nav-open')
 })
+
+
+// STICKY NAVIGATION
+const hero = document.querySelector('.hero')
+const headerHeight = header.getBoundingClientRect().height
+
+function callback([entries]) {
+  if (!entries.isIntersecting) {
+    header.classList.add('sticky')
+  } else header.classList.remove('sticky')
+}
+
+const options = {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${headerHeight}px`,
+}
+
+const headerObserver = new IntersectionObserver(callback, options)
+headerObserver.observe(hero)
+
+
+
+// Reveal Sections
+const all = document.querySelectorAll('section')
+// removing hero section
+const allSections = []
+for (let i = 1; i < all.length; i++) {
+  allSections.push(all[i])
+}
+
+function revealCallback([entries]) {
+  if (!entries.isIntersecting) return
+  entries.target.classList.remove('hidden')
+
+  sectionObserver.unobserve(entries.target)
+}
+
+const revealoptions = {
+  root: null,
+  threshold: 0.04,
+}
+
+const sectionObserver = new IntersectionObserver(revealCallback, revealoptions)
+
+allSections.forEach(section => {
+  sectionObserver.observe(section)
+  section.classList.add('hidden')
+})
+
+// Lazy Loading
+
+const lazyImages = document.querySelectorAll('.project-image-container img')
+console.log(lazyImages)
+
+function lazyCallback([entries]) {
+  if (!entries.isIntersecting) return
+
+  entries.target.src = entries.target.dataset.src
+  entries.target.addEventListener('load', () => entries.target.classList.remove('blur'))
+  imgObserver.unobserve(entries.target)
+}
+
+const lazyOptions = {
+  root: null,
+  threshold: 0
+}
+const imgObserver = new IntersectionObserver(lazyCallback, lazyOptions)
+lazyImages.forEach(img => imgObserver.observe(img))

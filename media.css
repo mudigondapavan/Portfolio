@@ -36,13 +36,6 @@ SPACING SYSTEM(px)
 
 /* 852px */
 @media (max-width: 53.2em) {
-  .header {
-    position: sticky;
-    top: 0;
-    background-color: rgba(237, 247, 254, 0.7);
-    backdrop-filter: blur(8px);
-  }
-
   .hero .grid-2-cols {
     grid-template-columns: 1fr;
     gap: 8rem;
