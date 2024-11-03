@@ -70,7 +70,6 @@ for (let i = 1; i < all.length; i++) {
 function revealCallback([entries]) {
   if (!entries.isIntersecting) return
   entries.target.classList.remove('hidden')
-
   sectionObserver.unobserve(entries.target)
 }
 
@@ -87,7 +86,6 @@ allSections.forEach(section => {
 })
 
 // Lazy Loading
-
 const lazyImages = document.querySelectorAll('.project-image-container img')
 
 function lazyCallback([entries]) {
@@ -111,7 +109,6 @@ lazyImages.forEach(img => {
 // Dark Theme
 const body = document.querySelector('body')
 const btnTheme = document.querySelector('.theme')
-
 
 let theme
 document.addEventListener('DOMContentLoaded', () => {

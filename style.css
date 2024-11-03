@@ -145,7 +145,7 @@ body {
   justify-self: end;
 }
 
-.main section {
+.main section+section {
   padding-top: 80px;
 }
 
@@ -285,7 +285,6 @@ a:active {
 
 .hero {
   background-color: var(--primary-lightcolor);
-  padding: 6.4rem 3.2rem 9.6rem;
   padding: 6.4rem 0 9.6rem;
   margin-bottom: 4.8rem;
 }
