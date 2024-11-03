@@ -9,13 +9,65 @@ SPACING SYSTEM(px)
   --main-color: #4dabf7;
   --main-lightcolor: #71bcf9;
   --main-darkcolor: #3e89c6;
+
   --primary-darkcolor: #0f2231;
   --secondary-darkcolor: #27567c;
+
   --primary-lightcolor: #edf7fe;
+  --primary-lightcolor-transparent: rgba(236, 246, 254, 0.95);
   --secondary-lightcolor: #a6d5fb;
-  --gray-color: #333;
-  --shadow: 0 8px 8px 8px #4dabf734;
-  --hero-shadow: 0 0 8px 8px #4dabf734;
+
+  --black-transparent: rgba(0, 0, 0, 0.9);
+  --white-transparent: rgba(254, 254, 254, 0.8);
+  --shadow-color: #4dabf734;
+
+  --light-gray: #ccc;
+  --gray-3: #333;
+  --gray-5: #555;
+  --gray-9: #999;
+
+  --white: #fff;
+}
+
+/* THEME CHANGER */
+.theme {
+  cursor: pointer;
+}
+
+.sun,
+.dark .moon {
+  display: none;
+}
+
+.dark .sun {
+  display: inline;
+}
+
+/* 0-f, 1-e 2-d 3-c 4-b 5-a 6-9 7-8 */
+body.dark {
+  /* Main Colors */
+  --main-color: #4dabf7;
+  --main-lightcolor: #3e89c6;
+  --main-darkcolor: #71bcf9;
+
+  --primary-darkcolor: #dbeefd;
+  --secondary-darkcolor: #a6d5fb;
+
+  --primary-lightcolor: #0f2231;
+  --primary-lightcolor-transparent: rgba(27, 46, 66, 0.95);
+  --secondary-lightcolor: #27567c;
+
+  --black-transparent: rgba(254, 254, 254, 0.9);
+  --white-transparent: rgba(0, 0, 0, 0.8);
+
+  --shadow-color: #4dabf734;
+
+  --light-gray: #444;
+  --gray-3: #eee;
+  --gray-5: #aaa;
+  --gray-9: #666;
+
+  --white: #081119;
 }
 
 * {
@@ -26,7 +78,7 @@ SPACING SYSTEM(px)
 
 *:focus {
   outline: none;
-  box-shadow: 0 0 8px 8px rgba(77, 171, 247, 0.3);
+  box-shadow: 0 0 6px 6px var(--shadow-color);
 }
 
 html {
@@ -36,8 +88,9 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  color: var(--gray-color);
+  color: var(--gray-3);
   font-weight: 400;
+  background-color: var(--white);
 }
 
 .grid {
@@ -76,7 +129,8 @@ body {
   letter-spacing: 1px;
   border: 1px solid var(--main-color);
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--white);
+  color: var(--gray-3);
 }
 
 .btn-hover:hover {
@@ -91,25 +145,21 @@ body {
   justify-self: end;
 }
 
-section {
-  margin-bottom: 12.8rem;
+.main section {
+  padding-top: 80px;
 }
-
-/* section + section {
-  transform: translateY(10px);
-} */
 
 .mb-s {
   margin-bottom: 2.4rem;
 }
 
 .shadow:hover {
-  box-shadow: var(--shadow);
+  box-shadow: 0 8px 8px 8px var(--shadow-color);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #ccc;
+  color: var(--light-gray);
 }
 
 /****************/
@@ -133,7 +183,7 @@ section + section {
 
 .hidden {
   opacity: 0;
-  transform: translateY(80px);
+  transform: translateY(100px);
   transition: all 2s;
 }
 
@@ -147,7 +197,7 @@ ul {
 a:link,
 a:visited {
   text-decoration: none;
-  color: var(--gray-color);
+  color: var(--gray-3);
 }
 
 a:hover,
@@ -169,25 +219,24 @@ a:active {
   padding: 0.8rem 1.6rem;
   display: inline-block;
   background-color: var(--main-color);
-  color: #fff !important;
+  color: var(--white) !important;
   border-radius: 11px;
 }
 
 .left-active .btn-left {
   background-color: var(--main-color);
-  color: #fff;
-}
-
-.left-active .education-card {
-  display: none;
+  color: var(--white);
 }
 
 .right-active .btn-right {
   background-color: var(--main-color);
-  color: #fff;
+  color: var(--white);
 }
 
-.right-active .about-card {
+.right-active .about-card,
+.left-active .education-card,
+.close,
+.nav-open .bar {
   display: none;
 }
 
@@ -196,22 +245,15 @@ a:active {
   font-size: 2.2rem;
 }
 
-.nav-open .bar {
-  display: none;
-}
-
-.close {
-  display: none;
-}
-
 .nav-open ul {
-  background-color: rgba(237, 247, 254, 0.95);
-  box-shadow: 0 0 8px 8px rgba(77, 171, 247, 0.2);
+  background-color: var(--primary-lightcolor-transparent);
+  border-radius: 9px;
+  box-shadow: 0 0 10px 5px var(--shadow-color);
   padding: 40px;
   flex-direction: column;
   position: absolute;
-  top: 1%;
-  right: 5%;
+  top: 0%;
+  right: 3%;
 }
 
 .nav-open nav {
@@ -231,11 +273,10 @@ a:active {
 .sticky {
   position: sticky;
   top: 0;
-  background-color: rgba(254, 254, 254, 0.8);
+  background-color: var(--white-transparent);
   z-index: 1;
-  box-shadow: 0 8px 20px -20px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 8px 20px -20px var(--black-transparent);
   backdrop-filter: blur(8px);
-  transition: all 2s;
 }
 
 /****************/
@@ -287,7 +328,7 @@ h1 + h1 {
 .hero-img img {
   width: 80%;
   border-radius: 50%;
-  box-shadow: var(--hero-shadow);
+  box-shadow: 0 0 8px 8px var(--shadow-color);
   transition: all 0.3s ease-in-out;
   object-fit: cover;
 }
@@ -329,14 +370,14 @@ h1 + h1 {
   border: 0.2rem solid var(--main-color);
   padding: 1rem;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--white);
   color: var(--main-color);
 }
 
 .social-icons i:hover {
   box-shadow: 0 0 5px 5px var(--main-lightcolor);
   cursor: pointer;
-  color: #fff;
+  color: var(--white);
   background-color: var(--main-color);
 }
 
@@ -365,7 +406,7 @@ h1 + h1 {
 .education-card h6 {
   font-size: 1.3rem;
   margin-bottom: 1.2rem;
-  color: #999;
+  color: var(--gray-9);
   font-weight: 500;
 }
 
@@ -401,6 +442,10 @@ h1 + h1 {
 /* Project */
 /****************/
 
+#project {
+  margin-bottom: 12.8rem;
+}
+
 .project h2 {
   font-size: 2.8rem;
   font-weight: 500;
@@ -420,7 +465,7 @@ h1 + h1 {
 }
 
 .project .countries h2 a {
-  color: black;
+  color: var(--gray-3);
 }
 
 .project .lisbon h2 a {
@@ -429,10 +474,6 @@ h1 + h1 {
 
 .project .hamburger h2 a {
   color: #492118;
-}
-
-.project .number h2 a {
-  color: #222;
 }
 
 /* vertical */
@@ -483,8 +524,9 @@ form textarea {
   font-family: inherit;
   margin-bottom: 1.2rem;
   border: none;
-  background-color: #fff;
+  background-color: var(--white);
   width: 100%;
+  color: inherit;
 }
 
 textarea {
@@ -493,7 +535,7 @@ textarea {
 }
 
 .contact .information {
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 11px;
 }
 
@@ -514,7 +556,7 @@ textarea {
 
 .information p {
   font-size: 1.9rem;
-  color: #999;
+  color: var(--gray-9);
 }
 
 /****************/
@@ -526,9 +568,9 @@ textarea {
 }
 
 .footer p {
-  border-top: 1px solid #999;
+  border-top: 1px solid var(--gray-9);
   padding: 2.4rem;
   text-align: center;
   font-size: 1.6rem;
-  color: #555;
+  color: var(--gray-5);
 }

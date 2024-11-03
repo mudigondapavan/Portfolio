@@ -89,7 +89,6 @@ allSections.forEach(section => {
 // Lazy Loading
 
 const lazyImages = document.querySelectorAll('.project-image-container img')
-console.log(lazyImages)
 
 function lazyCallback([entries]) {
   if (!entries.isIntersecting) return
@@ -104,4 +103,27 @@ const lazyOptions = {
   threshold: 0
 }
 const imgObserver = new IntersectionObserver(lazyCallback, lazyOptions)
-lazyImages.forEach(img => imgObserver.observe(img))
+lazyImages.forEach(img => {
+  img.classList.add('blur')
+  imgObserver.observe(img)
+})
+
+// Dark Theme
+const body = document.querySelector('body')
+const btnTheme = document.querySelector('.theme')
+
+
+let theme
+document.addEventListener('DOMContentLoaded', () => {
+  theme = localStorage.getItem('theme')
+  if (!theme) return
+  body.classList.add(theme)
+})
+
+btnTheme.addEventListener('click', () => {
+  localStorage.setItem('theme', 'dark')
+  if (body.classList.contains('dark')) {
+    localStorage.setItem('theme', '')
+  }
+  body.classList.toggle('dark')
+})
