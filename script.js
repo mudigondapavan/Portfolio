@@ -42,8 +42,8 @@ close.addEventListener('click', () => {
 const hero = document.querySelector('.hero')
 const headerHeight = header.getBoundingClientRect().height
 
-function callback([entries]) {
-  if (!entries.isIntersecting) {
+function callback([entry]) {
+  if (!entry.isIntersecting) {
     header.classList.add('sticky')
   } else header.classList.remove('sticky')
 }
@@ -67,15 +67,17 @@ for (let i = 1; i < all.length; i++) {
   allSections.push(all[i])
 }
 
-function revealCallback([entries]) {
-  if (!entries.isIntersecting) return
-  entries.target.classList.remove('hidden')
-  sectionObserver.unobserve(entries.target)
+function revealCallback(entries) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return
+    entry.target.classList.remove('hidden')
+    sectionObserver.unobserve(entry.target)
+  })
 }
 
 const revealoptions = {
   root: null,
-  threshold: 0.04,
+  rootMargin : '-80px',
 }
 
 const sectionObserver = new IntersectionObserver(revealCallback, revealoptions)
@@ -88,12 +90,13 @@ allSections.forEach(section => {
 // Lazy Loading
 const lazyImages = document.querySelectorAll('.project-image-container img')
 
-function lazyCallback([entries]) {
-  if (!entries.isIntersecting) return
-
-  entries.target.src = entries.target.dataset.src
-  entries.target.addEventListener('load', () => entries.target.classList.remove('blur'))
-  imgObserver.unobserve(entries.target)
+function lazyCallback(entries) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return
+    entry.target.src = entry.target.dataset.src
+    entry.target.addEventListener('load', () => entry.target.classList.remove('blur'))
+    imgObserver.unobserve(entry.target)
+  })
 }
 
 const lazyOptions = {

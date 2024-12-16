@@ -145,8 +145,8 @@ body {
   justify-self: end;
 }
 
-.main section+section {
-  padding-top: 80px;
+.main section + section {
+  margin-top: 8rem;
 }
 
 .mb-s {
@@ -328,6 +328,7 @@ h1 + h1 {
   width: 80%;
   border-radius: 50%;
   box-shadow: 0 0 8px 8px var(--shadow-color);
+  filter: drop-shadow(0 0 8px #3e89c6);
   transition: all 0.3s ease-in-out;
   object-fit: cover;
 }
